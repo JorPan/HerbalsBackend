@@ -6,8 +6,8 @@ class StrainsController < ApplicationController
         else
             @strains = Strain.all
         end
-        # id = Strain.find_by(name: params[:search]).id
-        # # byebug
+
+        
             render json: @strains
             # redirect_to "https://herbalstrains.firebaseapp.com/strains.html"
     end
