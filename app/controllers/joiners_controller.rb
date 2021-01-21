@@ -78,7 +78,7 @@ class JoinersController < ApplicationController
         end
 
 
-        redirect_to "https://herbalstrains.web.com/suggestions.html" 
+        redirect_to "https://herbalstrains.firebaseapp.com/suggestions.html" 
 
     end
 
