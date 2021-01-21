@@ -2,8 +2,7 @@ class StrainsController < ApplicationController
 
     def index
         if params[:search]
-            search_term = params[:search].capitalize
-            @strains = Strain.where('name LIKE ?', "%#{search_term}%")
+            @strains = Strain.where('name LIKE ?', `%#{params[:search]}%`)
         else
             @strains = Strain.all
         end
