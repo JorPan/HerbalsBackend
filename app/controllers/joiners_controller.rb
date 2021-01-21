@@ -78,7 +78,7 @@ class JoinersController < ApplicationController
         end
 
 
-        redirect_to "http://localhost:3001/suggestions.html" 
+        redirect_to "http://localhost:3000/suggestions.html" 
 
     end
 
