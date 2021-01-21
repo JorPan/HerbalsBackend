@@ -8,8 +8,8 @@ class StrainsController < ApplicationController
         end
         # id = Strain.find_by(name: params[:search]).id
         # # byebug
-            render json: @strains
-            # redirect_to "http:localhost:3000/strains.html/#{id}"
+            # render json: @strains
+            redirect_to "https://herbalstrains.firebaseapp.com/strains.html"
     end
 
     def show 
