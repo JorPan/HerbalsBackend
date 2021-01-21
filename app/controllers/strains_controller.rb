@@ -2,12 +2,13 @@ class StrainsController < ApplicationController
 
     def index
         if params[:search]
-            @strains = Strain.where('name LIKE ?', "%#{params[:search]}%")
+            search_term = params[:search].capitalize
+            @strains = Strain.where('name LIKE ?', "%#{search_term}%")
         else
             @strains = Strain.all
         end
 
-        
+
             render json: @strains
             # redirect_to "https://herbalstrains.firebaseapp.com/strains.html"
     end
