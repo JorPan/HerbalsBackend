@@ -15,57 +15,57 @@ class JoinersController < ApplicationController
 
     def create
         Joiner.destroy_all
-        $strainstodisplay = []
-        selectedpositiveeffects = []
-        selectednegativeeffects = []
-        selectedmedicaleffects = []
-        selecteffects = []  
+        $strains_to_display = []
+        selected_positive_effects = []
+        selected_negative_effects = []
+        selected_medical_effects = []
+        select_effects = []  
 
         params.each do |key, value|
            if (key.include? "effect" && "positive")
-                selectedpositiveeffects.push(key.split("-").first)
+                selected_positive_effects.push(key.split("-").first)
            elsif (key.include? "effect" && "medical")
-                selectedmedicaleffects.push(key.split("-").first)
+                selected_medical_effects.push(key.split("-").first)
            elsif (key.include? "effect" && "negative")
-                selectednegativeeffects.push(key.split("-").first)
+                selected_negative_effects.push(key.split("-").first)
            end
            
-           selecteffects.push(Effect.find_by effect: "{\"effect\"=>\"Relaxed\", \"type\"=>\"positive\"}")
+           select_effects.push(Effect.find_by effect: "{\"effect\"=>\"Relaxed\", \"type\"=>\"positive\"}")
         end
 
 
-       selectedstrains = []
-        clearspositive = Strain.all.select do |strain|
-            selectedpositiveeffects.each do |poseffect|
-                break if strain.positive_effects.exclude? poseffect
+       selected_strains = []
+        clears_positive = Strain.all.select do |strain|
+            selected_positive_effects.each do |pos_effect|
+                break if strain.positive_effects.exclude? pos_effect
             end
         end
 
-        clearsmedical = clearspositive.select do |strain|
-            selectedmedicaleffects.each do |medeffect|
-                break if strain.medical_effects.exclude? medeffect
+        clearsmedical = clears_positive.select do |strain|
+            selected_medical_effects.each do |med_effect|
+                break if strain.medical_effects.exclude? med_effect
             end
         end
 
-            clearsallthree = clearsmedical.select do |strain|
-                selectednegativeeffects.each do |negeffect|
-                    break if strain.negative_effects.include? negeffect
+            clears_all_three = clearsmedical.select do |strain|
+                selected_negative_effects.each do |neg_effect|
+                    break if strain.negative_effects.include? neg_effect
                 end
             end
 
-        clearsallthree.each do |strain|
-            $strainstodisplay.push(strain)
+        clears_all_three.each do |strain|
+            $strains_to_display.push(strain)
         end
 
-        strainarray = $strainstodisplay.map do |strain|
+        strain_array = $strains_to_display.map do |strain|
             Strain.find_by name: strain.name
         end
 
-        effectarray = Effect.all.map do |effect|
+        effect_array = Effect.all.map do |effect|
             effect.id
         end
 
-       @joiners = strainarray.map do |strain|
+       @joiners = strain_array.map do |strain|
             Joiner.create(
                 strain_id: strain.id,
                 name: strain.name,
@@ -78,7 +78,7 @@ class JoinersController < ApplicationController
         end
 
 
-        redirect_to "http://localhost:3000/suggestions.html" 
+        redirect_to "https://herbalstrains.firebaseapp.com/suggestions.html" 
 
     end
 

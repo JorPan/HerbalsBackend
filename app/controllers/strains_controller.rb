@@ -9,7 +9,7 @@ class StrainsController < ApplicationController
         # id = Strain.find_by(name: params[:search]).id
         # # byebug
             render json: @strains
-        #     redirect_to "http:localhost:3001/strains.html/#{id}"
+            # redirect_to "http:localhost:3000/strains.html/#{id}"
     end
 
     def show 
