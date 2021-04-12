@@ -1,3 +1,5 @@
+***UNFORTUNATELY THE API USED TO BUILD THIS PROJECT IS NO LONGER ACTIVE SO NO DATA IS RETRIEVED*** :( 
+
 # Herbals
  This app accesses an extensive database with information about positive effects, negative effects, and medical effects of different weed strains.  It is designed so the user can search for a strain and learn more about it, or provide their preferences for the effects they'd like to experience and which negative effects they'd like to avoid.  After indicating those preferences by checking boxes, users will see all the strains that match those preferences. 
  
